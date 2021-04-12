@@ -6,14 +6,23 @@ https://laradock.io/getting-started/
 # Basic usage
 
 ## 1. Clone this repository
-```
+
+```bash
 git clone git@github.com:vicenteherrera/laradock-sample.git
 ```
-This repo includes as a submodule a pinned version of Laradock that you have to retrieve also.
+This repo includes as a submodule a pinned version of Laradock that you have to retrieve also, using:
+
+```bash
+cd laradock-sample
+git pull --recurse-submodules
+```
+
+
 This is a good practice in case Laradock evolves with breaking changes, so you don't have to store your own copy of it, but you are in control of testing if what you are using is compatible with more recent commits.
 
 ## 3. Copy sample Laradock config to its folder
-```
+
+```bash
 cp myenv laradock/.env
 ```
 
@@ -23,7 +32,7 @@ Take a look at that file as it has in a single place almost every configuration 
 
 ## 4. Start Laradock and test the project
 
-```
+```bash
 cd laradock
 docker-compose up -d nginx mysql
 ```
@@ -45,7 +54,8 @@ You can write a script that backups and restores databases each time you take up
 ## 6. Graceful stop everything
 
 From the `laradock` directory, execute:
-```
+
+```bash
 docker-compose down
 ```
 
@@ -55,7 +65,7 @@ In the previous example, the PHP engine is executed in docker-compose and you ma
 
 To use the same PHP binary to execute development command line tools like Composer or PHP-Unit, you can execute a shell inside a container that has it set up with access to your source code, using:
 
-```
+```bash
 docker-compose exec -u laradock workspace bash
 ```
 
